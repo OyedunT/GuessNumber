@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        main {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 60%;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            color: #333;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Guessing Game</h1>
+        <p>Try to guess the correct number between 1 and 100</p>
+        <input id="guess" type="number" placeholder="Enter your guess">
+        <br>
+        <button onclick="checkGuess()">Confirm</button>
+        <p id="result"></p>
+    </main>
+
+    <script>
+        let input = document.getElementById('guess');
+        let resultMessage = document.getElementById('result');
+        let random_number = Math.floor(Math.random() * 100) + 1; 
+        console.log(random_number);
+
+        function checkGuess(){
+         input.value == random_number ? alert('you are correct') : alert('you are not correct')
+       }
+          function checkGuess() {
+            let userGuess = parseInt(input.value);
+
+            if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+                resultMessage.textContent = 'Please enter a valid number between 1 and 100.';
+            } else {
+                if (userGuess === random_number) {
+                    resultMessage.textContent = 'Congratulations! You guessed the correct number!';
+                } else {
+                    resultMessage.textContent = `Sorry, that's not the correct number. Try again.`;
+                }
+            }
+          }
+    </script>
+</body>
+</html>
+
